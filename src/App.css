@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color_body: #282c35
+}
+
+body {
+  font-size: 18px;
+  font-family: sans-serif;
+  background-color: #E0CDA3;
+  overflow: hidden;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  color: #dfdede;
+  font-size: 1.4em;
+  font-weight: 600;
+  -webkit-box-shadow: 4px 7px 31px -6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 7px 31px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 7px 31px -6px rgba(0, 0, 0, 0.75);
+}
+
+button.operation {
+  color: #c3782d;
+}
+
+button.other {
+  color: #26d0b4;
+}
+
+#root {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.calculator {
+  color: #dfdede;
+  width: 25%;
+  border-radius: 30px;
+  height: 80%;
+  background-color: #22252d;
+  overflow: hidden;
+}
+
+.result {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  height: 30%;
+  padding: 20px;
+}
+
+.result .content {
+  text-align: end;
+  width: 100%;
+}
+
+.content>input {
+  width: 100%;
+  height: 2rem;
+  font-size: 2.1em;
+  color: #dfdede;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  text-align: end;
+  cursor: auto;
+}
+
+.content>h4 {
+  font-size: 2.8em;
+  font-weight: 700;
+}
+
+.body {
+  background-color: var(--color_body);
+  width: 100%;
+  height: 70%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  place-items: center;
+  border-radius: 40px;
+  padding: 20px;
+}
