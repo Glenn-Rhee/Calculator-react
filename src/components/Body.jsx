@@ -39,12 +39,16 @@ export default function Body(props) {
     const isX = values.split(" ");
     if (isX[1] == "x") {
       isX[1] = "*";
-      const newValue = isX.join(" ");
+      let newValue = isX.join(" ");
+      newValue = newValue.split(",");
+      newValue = newValue.join("");
       const result = eval(newValue);
       const newResult = result.toFixed(4);
       trimZero(newResult);
     } else {
-      const result = eval(values);
+      let newValue = values.split(",");
+      newValue = newValue.join("");
+      const result = eval(newValue);
       const newResult = result.toFixed(4);
       trimZero(newResult);
     }
@@ -67,12 +71,6 @@ export default function Body(props) {
       }
     }
 
-    function setPoint(value) {
-      if (!valueRes.includes(".")) {
-        setValue(valueRes + value);
-      }
-    }
-
     function isOperation() {
       if (operation.includes("+")) {
         evaluate(h5Value);
@@ -89,6 +87,10 @@ export default function Body(props) {
       switch (value) {
         case "AC":
           remove(value);
+          break;
+
+        case "C":
+          setResult("");
           break;
 
         case "/":
@@ -137,36 +139,102 @@ export default function Body(props) {
               setValue2(secondValue / 100);
             }
           }
+
+          if (result != "") {
+            const newValue = parseInt(result);
+            setResult("");
+            setValue2("");
+            setOperation("");
+            setValue(newValue / 100);
+          }
           break;
 
         case "=":
           if (operation != "") {
-            console.log("ok");
-          }
-          if (valueRes2 != "") {
-            isOperation();
+            if (valueRes2 != "") {
+              isOperation();
+            }
           }
           break;
 
         case ".":
-          setPoint(value);
+          if (operation == "") {
+            if (valueRes == "") {
+              setValue("0" + value);
+            } else if (valueRes.includes(".")) {
+              return;
+            } else {
+              setValue(valueRes + value);
+            }
+          } else {
+            if (valueRes2 == "") {
+              setValue2("0" + value);
+            } else if (valueRes2.includes(".")) {
+              return;
+            } else {
+              setValue2(valueRes2 + value);
+            }
+          }
           break;
-        default:
-          if (valueRes == "") {
-            if (value == "00" || value == "0") {
-              return;
-            }
-          }
 
-          if (valueRes2 == "") {
-            if (value == "00" || value == "0") {
+        case "00":
+          if (operation == "") {
+            if (valueRes == "") {
               return;
+            } else if (valueRes == "0") {
+              return;
+            } else {
+              setValue(valueRes + value);
+            }
+          } else {
+            if (valueRes2 == "") {
+              return;
+            } else if (valueRes2 == "0") {
+              return;
+            } else {
+              setValue2(valueRes2 + value);
             }
           }
-          
-          operation == ""
-            ? setValue(valueRes + value)
-            : setValue2(valueRes2 + value);
+          break;
+
+        case "0":
+          if (operation == "") {
+            if (valueRes == "") {
+              setValue(value);
+            } else if (valueRes.includes(".")) {
+              setValue(valueRes + value);
+            } else if (valueRes.startsWith("0")) {
+              setValue(value);
+            } else {
+              setValue(valueRes + value);
+            }
+          } else {
+            if (valueRes2 == "") {
+              setValue2(value);
+            } else if (valueRes2.includes(".")) {
+              setValue2(valueRes2 + value);
+            } else if (valueRes2.startsWith("0")) {
+              setValue2(value);
+            } else {
+              setValue2(valueRes2 + value);
+            }
+          }
+          break;
+
+        default:
+          if (operation == "") {
+            if (valueRes == "0") {
+              setValue(value);
+            } else {
+              setValue(valueRes + value);
+            }
+          } else {
+            if (valueRes2 == "0") {
+              setValue2(value);
+            } else {
+              setValue2(valueRes2 + value);
+            }
+          }
 
           if (result !== "") {
             setResult("");
@@ -193,7 +261,7 @@ export default function Body(props) {
   return (
     <div className="body">
       <Button nameClass="other" value={"AC"} />
-      <Button nameClass="other" value={"+/-"} />
+      <Button nameClass="other" value={"C"} />
       <Button nameClass="other" value={"%"} />
       <Button nameClass="operation" value={"/"} />
       <Button value={"7"} />
