@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useEffect } from "react";
 
 Result.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.any,
   operation: PropTypes.string,
   result: PropTypes.any,
   value2: PropTypes.string,
@@ -10,13 +10,17 @@ Result.propTypes = {
   setH5Value: PropTypes.func,
 };
 
+const coba = "4";
+console.log(coba.split(".").length);
+
 export default function Result(props) {
   const { value, operation, result, value2, h5Value, setH5Value } = props;
 
   useEffect(() => {
     let newValue = value;
     if (newValue != "") {
-      if (!newValue.endsWith(".")) {
+      newValue = newValue.toString();
+      if (newValue.split(".").length < 2) {
         newValue = parseFloat(value);
         newValue = newValue.toLocaleString();
       }
@@ -24,7 +28,8 @@ export default function Result(props) {
 
     let newValue2 = value2;
     if (newValue2 != "") {
-      if (!newValue2.endsWith(".")) {
+      newValue2 = newValue2.toString();
+      if (!newValue2.split(".").length < 2) {
         newValue2 = parseFloat(value2);
         newValue2 = newValue2.toLocaleString();
       }

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 Body.propTypes = {
   setValue: PropTypes.func,
-  valueRes: PropTypes.string,
+  valueRes: PropTypes.any,
   setValue2: PropTypes.func,
   setOperation: PropTypes.func,
   setResult: PropTypes.func,
@@ -126,22 +126,34 @@ export default function Body(props) {
           break;
 
         case "%":
+          //   if (operation == "") {
+          //     if (valueRes != "") {
+          //       let firstValue = valueRes;
+          //       firstValue = parseFloat(firstValue);
+          //       setValue(firstValue / 100);
+          //     }
+          //   } else {
+          //     if (valueRes2 != "") {
+          //       let secondValue = valueRes2;
+          //       secondValue = parseFloat(secondValue);
+          //       setValue2(secondValue / 100);
+          //     }
+          //   }
+
           if (operation == "") {
             if (valueRes != "") {
-              let firstValue = valueRes;
-              firstValue = parseInt(firstValue);
-              setValue(firstValue / 100);
+              let first = parseFloat(valueRes);
+              setValue(first / 100);
             }
           } else {
             if (valueRes2 != "") {
-              let secondValue = valueRes2;
-              secondValue = parseInt(secondValue);
-              setValue2(secondValue / 100);
+              let second = parseFloat(valueRes2);
+              setValue2(second / 100);
             }
           }
 
           if (result != "") {
-            const newValue = parseInt(result);
+            const newValue = parseFloat(result);
             setResult("");
             setValue2("");
             setOperation("");
