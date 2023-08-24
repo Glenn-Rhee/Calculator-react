@@ -11,26 +11,28 @@ function App() {
   const [h5Value, setH5Value] = useState("");
 
   return (
-    <div className="calculator">
-      <Result
-        value={value}
-        value2={value2}
-        operation={operation}
-        result={result}
-        h5Value={h5Value}
-        setH5Value={setH5Value}
-      />
-      <Body
-        setValue={setValue}
-        operation={operation}
-        valueRes={value}
-        valueRes2={value2}
-        result={result}
-        setValue2={setValue2}
-        setOperation={setOperation}
-        setResult={setResult}
-        h5Value={h5Value}
-      />
+    <div className="container">
+      <div className="calculator">
+        <Result
+          value={value}
+          value2={value2}
+          operation={operation}
+          result={result}
+          h5Value={h5Value}
+          setH5Value={setH5Value}
+        />
+        <Body
+          setValue={setValue}
+          operation={operation}
+          valueRes={value}
+          valueRes2={value2}
+          result={result}
+          setValue2={setValue2}
+          setOperation={setOperation}
+          setResult={setResult}
+          h5Value={h5Value}
+        />
+      </div>
     </div>
   );
 }

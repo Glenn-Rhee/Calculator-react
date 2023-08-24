@@ -67,11 +67,9 @@ export default function Result(props) {
   }
 
   return (
-    <div className="result">
-      <div className="content">
-        <input type="text" readOnly value={h5Value} maxLength="19" />
-        <h4>{newResult}</h4>
-      </div>
-    </div>
+    <header>
+      <input type="text" readOnly value={h5Value} maxLength="19" />
+      <h4>{newResult}</h4>
+    </header>
   );
 }
