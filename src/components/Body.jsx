@@ -89,8 +89,19 @@ export default function Body(props) {
           remove(value);
           break;
 
-        case "C":
-          setResult("");
+        case "Del":
+          if (operation == "") {
+            if (valueRes != "") {
+              setValue(valueRes.slice(0, -1));
+            }
+          } else {
+            if (valueRes2 != "") {
+              setValue2(valueRes2.slice(0, -1));
+            } else if (operation != "") {
+              setOperation("");
+            }
+          }
+
           break;
 
         case "/":
@@ -259,7 +270,7 @@ export default function Body(props) {
   return (
     <div className="body">
       <Button nameClass="other" value={"AC"} />
-      <Button nameClass="other" value={"C"} />
+      <Button nameClass="other" value={"Del"} />
       <Button nameClass="other" value={"%"} />
       <Button nameClass="operation" value={"/"} />
       <Button value={"7"} />

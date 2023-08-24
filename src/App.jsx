@@ -12,7 +12,6 @@ function App() {
 
   return (
     <div className="calculator">
-      <h1>Hello World</h1>
       <Result
         value={value}
         value2={value2}

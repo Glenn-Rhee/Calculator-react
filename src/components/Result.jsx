@@ -10,9 +10,6 @@ Result.propTypes = {
   setH5Value: PropTypes.func,
 };
 
-const coba = "4";
-console.log(coba.split(".").length);
-
 export default function Result(props) {
   const { value, operation, result, value2, h5Value, setH5Value } = props;
 
