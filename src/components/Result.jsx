@@ -10,14 +10,19 @@ Result.propTypes = {
   setH5Value: PropTypes.func,
 };
 
-export default function Result(props) {
+const Result = (props) => {
   const { value, operation, result, value2, h5Value, setH5Value } = props;
 
   useEffect(() => {
     let newValue = value;
     if (newValue != "") {
       newValue = newValue.toString();
-      if (!newValue.split(".").length < 2) {
+      if (newValue.includes(".") && !newValue.endsWith(".")) {
+        newValue = newValue.split(".");
+        newValue[0] = parseInt(newValue[0]);
+        newValue[0] = newValue[0].toLocaleString();
+        newValue = newValue.join(".");
+      } else {
         newValue = parseFloat(value);
         newValue = newValue.toLocaleString();
       }
@@ -72,4 +77,6 @@ export default function Result(props) {
       <h4>{newResult}</h4>
     </header>
   );
-}
+};
+
+export default Result;
