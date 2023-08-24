@@ -110,3 +110,7 @@ header>h4 {
   border-top-right-radius: 40px;
   border-top-left-radius: 40px;
 }
+
+@media (min-width: 768px) {
+  
+}
