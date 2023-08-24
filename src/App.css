@@ -28,7 +28,7 @@ button {
   -webkit-box-shadow: 4px 7px 31px -6px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 4px 7px 31px -6px rgba(0, 0, 0, 0.75);
   box-shadow: 4px 7px 31px -6px rgba(0, 0, 0, 0.75);
-  border-radius: 50%  ;
+  border-radius: 50%;
 }
 
 button.operation {
@@ -83,6 +83,7 @@ button.other {
   background-color: transparent;
   text-align: end;
   cursor: auto;
+  overflow: auto;
 }
 
 .content>h4 {

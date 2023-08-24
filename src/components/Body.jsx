@@ -91,12 +91,19 @@ export default function Body(props) {
 
         case "Del":
           if (operation == "") {
-            if (valueRes != "") {
-              setValue(valueRes.slice(0, -1));
+            if (valueRes != "" || valueRes.includes(".")) {
+              const newValue = valueRes.toString();
+              setValue(newValue.slice(0, -1));
             }
+          } else if (result != "") {
+            setValue("");
+            setOperation("");
+            setValue2("");
+            setResult("");
           } else {
             if (valueRes2 != "") {
-              setValue2(valueRes2.slice(0, -1));
+              const newValue2 = valueRes2.toString();
+              setValue2(newValue2.slice(0, -1));
             } else if (operation != "") {
               setOperation("");
             }
@@ -235,13 +242,21 @@ export default function Body(props) {
             if (valueRes == "0") {
               setValue(value);
             } else {
-              setValue(valueRes + value);
+              if (valueRes.length > 8) {
+                setValue(valueRes.slice(0, -1));
+              } else {
+                setValue(valueRes + value);
+              }
             }
           } else {
             if (valueRes2 == "0") {
               setValue2(value);
             } else {
-              setValue2(valueRes2 + value);
+              if (valueRes2.length > 8) {
+                setValue2(valueRes2.slice(0, -1));
+              } else {
+                setValue2(valueRes2 + value);
+              }
             }
           }
 

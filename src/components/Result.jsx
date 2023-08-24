@@ -17,7 +17,7 @@ export default function Result(props) {
     let newValue = value;
     if (newValue != "") {
       newValue = newValue.toString();
-      if (newValue.split(".").length < 2) {
+      if (!newValue.split(".").length < 2) {
         newValue = parseFloat(value);
         newValue = newValue.toLocaleString();
       }
@@ -31,6 +31,7 @@ export default function Result(props) {
         newValue2 = newValue2.toLocaleString();
       }
     }
+
     setH5Value(newValue + " " + operation + " " + newValue2);
   }, [value, operation, value2, setH5Value]);
 
@@ -45,22 +46,30 @@ export default function Result(props) {
     }
   }
 
-  if (result.length > 12) {
+  const maxLength = 10;
+  if (result.length > maxLength) {
     let trimResult = [];
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < maxLength; i++) {
       trimResult = [...trimResult, result[i]];
     }
-
     newResult = trimResult.join("");
   }
+
   if (newResult != "") {
     newResult = parseFloat(newResult);
     newResult = newResult.toLocaleString();
   }
+
+  if (newResult.includes("-")) {
+    newResult = newResult.split("");
+    newResult.splice(1, 0, " ");
+    newResult = newResult.join("");
+  }
+
   return (
     <div className="result">
       <div className="content">
-        <input type="text" readOnly value={h5Value} />
+        <input type="text" readOnly value={h5Value} maxLength="19" />
         <h4>{newResult}</h4>
       </div>
     </div>
