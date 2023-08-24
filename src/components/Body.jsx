@@ -126,20 +126,6 @@ export default function Body(props) {
           break;
 
         case "%":
-          //   if (operation == "") {
-          //     if (valueRes != "") {
-          //       let firstValue = valueRes;
-          //       firstValue = parseFloat(firstValue);
-          //       setValue(firstValue / 100);
-          //     }
-          //   } else {
-          //     if (valueRes2 != "") {
-          //       let secondValue = valueRes2;
-          //       secondValue = parseFloat(secondValue);
-          //       setValue2(secondValue / 100);
-          //     }
-          //   }
-
           if (operation == "") {
             if (valueRes != "") {
               let first = parseFloat(valueRes);
