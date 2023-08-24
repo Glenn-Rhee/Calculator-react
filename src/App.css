@@ -83,7 +83,6 @@ button.other {
   background-color: transparent;
   text-align: end;
   cursor: auto;
-  overflow: auto;
 }
 
 .content>h4 {
