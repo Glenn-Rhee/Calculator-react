@@ -10,7 +10,7 @@ Result.propTypes = {
   setH5Value: PropTypes.func,
 };
 
-const Result = (props) => {
+export default function Result(props) {
   const { value, operation, result, value2, h5Value, setH5Value } = props;
 
   useEffect(() => {
@@ -77,6 +77,4 @@ const Result = (props) => {
       <h4>{newResult}</h4>
     </header>
   );
-};
-
-export default Result;
+}
